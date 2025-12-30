@@ -13,6 +13,7 @@ from Core.Query import get_query
 from Core.Storage.NameSpace import Workspace
 from Core.Community.ClusterFactory import get_community
 from Core.Storage.PickleBlobStorage import PickleBlobStorage
+from Core.Common.Context import Context
 from colorama import Fore, Style, init
 
 
@@ -182,7 +183,6 @@ class GraphRAG(ContextMixin, BaseModel):
                         config_value = self.config.retriever
                     elif context_name == "llm" and self.config.query_llm is not None:
                         # Use separate query LLM if configured
-                        from Core.Common.Context import Context
                         context = Context()
                         config_value = context.llm_with_cost_manager_from_llm_config(self.config.query_llm)
                         logger.info(f"Using separate query LLM: {self.config.query_llm.model} (api_type: {self.config.query_llm.api_type})")

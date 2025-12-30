@@ -191,21 +191,21 @@ llm:
 
 ### Per-Corpus Mode Issues
 
-**Q**: No questions found for corpus X
+**Q**: No questions found for corpus X  
 **A**: Check that questions have matching `doc_id` field
 
-**Q**: Questions in Question.json 没有 doc_id 字段
-**A**: Add doc_id field to each question
+**Q**: Questions in Question.json missing doc_id field / Question.json 中的问题缺少 doc_id 字段  
+**A**: Add doc_id field to each question / 为每个问题添加 doc_id 字段
 
 ### Dual LLM Mode Issues
 
-**Q**: Ollama not responding
+**Q**: Ollama not responding  
 **A**: Run `ollama serve` and check `http://localhost:11434`
 
-**Q**: Model not found
+**Q**: Model not found  
 **A**: Pull the model: `ollama pull qwen2.5:14b`
 
-**Q**: Still using same model for queries
+**Q**: Still using same model for queries  
 **A**: Check that `query_llm` is properly configured in Config2.yaml
 
 ---
