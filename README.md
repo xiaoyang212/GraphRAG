@@ -116,6 +116,28 @@ GraphRAG supports both cloud-based and local deployment of LLMs:
 
 To use a local model, set `api_type` to `open_llm` in the configuration file.
 
+#### Using Different LLMs for Graph Building and Query Answering
+
+You can now use **separate LLMs** for different stages:
+- Use a powerful model (e.g., GPT-4) for building high-quality graphs
+- Use a local/cheaper model (e.g., Ollama) for answering questions
+
+See [Doc/SEPARATE_LLMS.md](Doc/SEPARATE_LLMS.md) for detailed configuration guide.
+
+**Quick Example:**
+```yaml
+llm:
+  api_type: "openai"
+  model: "gpt-4"
+  api_key: "sk-..."
+
+query_llm:  # Optional: use different LLM for answering
+  api_type: "ollama"
+  base_url: "http://localhost:11434/v1"
+  model: "qwen2.5:14b"
+  api_key: "ollama"
+```
+
 ##### Example Configuration (`config.yaml`):
 
 ```yaml
