@@ -22,10 +22,14 @@ def check_dirs(opt):
     os.makedirs(result_dir, exist_ok=True)
     os.makedirs(config_dir, exist_ok=True)
     os.makedirs(metric_dir, exist_ok=True)
-    opt_name = args.opt[args.opt.rindex("/") + 1 :]
-    basic_name = os.path.join(args.opt.split("/")[0], "Config2.yaml")
+    
+    # Safely extract config file names
+    opt_name = os.path.basename(args.opt)
+    basic_name = os.path.join(os.path.dirname(args.opt), "Config2.yaml")
+    
     copyfile(args.opt, os.path.join(config_dir, opt_name))
-    copyfile(basic_name, os.path.join(config_dir, "Config2.yaml"))
+    if os.path.exists(basic_name):
+        copyfile(basic_name, os.path.join(config_dir, "Config2.yaml"))
     return result_dir, metric_dir
 
 
@@ -137,7 +141,7 @@ async def wrapper_evaluation(path, opt, metric_dir):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("-opt", type=str, help="Path to option YMAL file.")
+    parser.add_argument("-opt", type=str, help="Path to option YAML file.")
     parser.add_argument("-dataset_name", type=str, help="Name of the dataset.")
     args = parser.parse_args()
 
