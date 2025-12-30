@@ -82,6 +82,25 @@ For example, to run `GraphRAG`:
 python main.py -opt Option/Method/GraphRAG.yaml -dataset_name your_dataset
 ```
 
+#### Per-Corpus Graph Processing
+
+If you want to build a **separate graph for each corpus sample** and answer only the questions corresponding to each corpus sample, use the `main_per_corpus.py` script:
+
+```bash
+python main_per_corpus.py -opt Option/Method/<METHOD>.yaml -dataset_name your_dataset
+```
+
+This mode:
+- Processes each corpus sample individually
+- Builds and saves a separate graph for each corpus document
+- Queries only the questions related to that specific corpus sample
+- Saves individual results for each corpus and a combined results file
+- Useful for isolating graph construction per document and avoiding cross-document interference
+
+**Data Format Requirements:**
+- `Corpus.json`: Contains corpus documents with fields: `title`, `context`
+- `Question.json`: Contains questions with fields: `question`, `answer`, and `doc_id` (or `corpus_id`) to link questions to corpus samples
+
 ### Dependencies
 
 Ensure you have the required dependencies installed (The default experiment name is digimon):

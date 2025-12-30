@@ -1,0 +1,6 @@
+{"question": "Who created Python?", "answer": "Guido van Rossum", "doc_id": 0}
+{"question": "When was Python first released?", "answer": "1991", "doc_id": 0}
+{"question": "What does machine learning enable?", "answer": "Systems to learn and improve from experience without being explicitly programmed", "doc_id": 1}
+{"question": "Is machine learning a subset of artificial intelligence?", "answer": "Yes", "doc_id": 1}
+{"question": "What programming languages do data scientists use?", "answer": "Python, R, and SQL", "doc_id": 2}
+{"question": "What is data science?", "answer": "An interdisciplinary field that uses scientific methods to extract knowledge from data", "doc_id": 2}
