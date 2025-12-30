@@ -82,6 +82,25 @@ For example, to run `GraphRAG`:
 python main.py -opt Option/Method/GraphRAG.yaml -dataset_name your_dataset
 ```
 
+#### Per-Corpus Graph Processing
+
+If you want to build a **separate graph for each corpus sample** and answer only the questions corresponding to each corpus sample, use the `main_per_corpus.py` script:
+
+```bash
+python main_per_corpus.py -opt Option/Method/<METHOD>.yaml -dataset_name your_dataset
+```
+
+This mode:
+- Processes each corpus sample individually
+- Builds and saves a separate graph for each corpus document
+- Queries only the questions related to that specific corpus sample
+- Saves individual results for each corpus and a combined results file
+- Useful for isolating graph construction per document and avoiding cross-document interference
+
+**Data Format Requirements:**
+- `Corpus.json`: Contains corpus documents with fields: `title`, `context`
+- `Question.json`: Contains questions with fields: `question`, `answer`, and `doc_id` (or `corpus_id`) to link questions to corpus samples
+
 ### Dependencies
 
 Ensure you have the required dependencies installed (The default experiment name is digimon):
@@ -96,6 +115,28 @@ GraphRAG supports both cloud-based and local deployment of LLMs:
 - **Locally deployed models:** `Ollama` and `LlamaFactory`
 
 To use a local model, set `api_type` to `open_llm` in the configuration file.
+
+#### Using Different LLMs for Graph Building and Query Answering
+
+You can now use **separate LLMs** for different stages:
+- Use a powerful model (e.g., GPT-4) for building high-quality graphs
+- Use a local/cheaper model (e.g., Ollama) for answering questions
+
+See [Doc/SEPARATE_LLMS.md](Doc/SEPARATE_LLMS.md) for detailed configuration guide.
+
+**Quick Example:**
+```yaml
+llm:
+  api_type: "openai"
+  model: "gpt-4"
+  api_key: "sk-..."
+
+query_llm:  # Optional: use different LLM for answering
+  api_type: "ollama"
+  base_url: "http://localhost:11434/v1"
+  model: "qwen2.5:14b"
+  api_key: "ollama"
+```
 
 ##### Example Configuration (`config.yaml`):
 

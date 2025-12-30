@@ -4,6 +4,14 @@ llm:
   model: "YOUR_MODEL"
   api_key: "YOUR_API_KEY"
 
+# Optional: Use a different LLM for query/answering questions
+# If not specified, the main llm above will be used for both graph building and querying
+# query_llm:
+#   api_type: "ollama"  # Use local Ollama for answering questions
+#   base_url: 'http://localhost:11434/v1'
+#   model: "qwen2.5:14b"  # Your local Ollama model
+#   api_key: "ollama"  # Ollama doesn't require a real API key
+
 embedding:
   api_type: "hf"  # or  ollama / openai.
   # base_url: "https://cfcus02.opapi.win/v1"  # or forward url / other llm url

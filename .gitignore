@@ -1,1 +1,35 @@
 __pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Experiment outputs
+tree_graph_*/
+rkg_graph_*/
+er_graph_*/
+passage_graph_*/
+Results/
+Metrics/
+Configs/
+
+# Virtual environments
+venv/
+env/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db

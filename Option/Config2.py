@@ -24,6 +24,7 @@ class Config(WorkingParams, YamlModel):
 
     # Key Parameters
     llm: LLMConfig
+    query_llm: Optional[LLMConfig] = None  # Optional separate LLM for query/answering questions
     exp_name: str = "default"
     # RAG Embedding
     embedding: EmbeddingConfig = EmbeddingConfig()
