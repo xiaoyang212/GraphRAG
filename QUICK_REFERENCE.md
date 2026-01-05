@@ -2,13 +2,51 @@
 
 ## 快速参考指南 - GraphRAG 高级功能
 
-This guide covers the two main advanced features added to GraphRAG.
+This guide covers the main advanced features added to GraphRAG.
 
-本指南涵盖添加到 GraphRAG 的两个主要高级功能。
+本指南涵盖添加到 GraphRAG 的主要高级功能。
 
 ---
 
-## Feature 1: Per-Corpus Graph Processing / 功能1：按语料库样本独立建图
+## Feature 1: Multiple-Choice Question Support / 功能1：选择题支持
+
+### What it does / 功能说明
+Support evaluation of multiple-choice questions using close-set evaluation mode.
+
+支持使用 close-set 评估模式评估选择题。
+
+### When to use / 使用场景
+- Testing with multiple-choice questions / 使用选择题进行测试
+- Evaluating model's option selection ability / 评估模型的选项选择能力
+- Comparing with standardized test datasets / 与标准化测试数据集进行比较
+
+### Usage / 使用方法
+```bash
+python main.py -opt Option/Method/RAPTOR.yaml -dataset_name quality_example
+```
+
+### Requirements / 要求
+Questions must have `answer_idx` field with the option letter:
+```json
+{
+  "question": "Who created Python?\nA: James\nB: Guido\nC: Dennis\nD: Bjarne",
+  "answer": "Guido van Rossum",
+  "answer_idx": "B",
+  "doc_id": 0
+}
+```
+
+### Key Points / 要点
+- Dataset name should include "quality" to trigger close-set mode
+- 数据集名称应包含 "quality" 以触发 close-set 模式
+- See example: `Data/MultipleChoiceExample/`
+- 查看示例：`Data/MultipleChoiceExample/`
+
+📖 **Documentation**: `Doc/MULTIPLE_CHOICE_SUPPORT.md`
+
+---
+
+## Feature 2: Per-Corpus Graph Processing / 功能2：按语料库样本独立建图
 
 ### What it does / 功能说明
 Build separate graphs for each corpus document and answer only the questions related to that document.
@@ -43,7 +81,7 @@ Results/
 
 ---
 
-## Feature 2: Separate LLMs for Building and Querying / 功能2：建图和查询使用不同的大模型
+## Feature 3: Separate LLMs for Building and Querying / 功能3：建图和查询使用不同的大模型
 
 ### What it does / 功能说明
 Use different LLM models for graph construction vs. question answering.
