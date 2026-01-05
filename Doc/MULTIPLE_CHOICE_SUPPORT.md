@@ -143,8 +143,9 @@ Multiple-choice questions use **close-set mode** with the following metrics:
 3. **提取选项** (Extract Options)
    - 使用 LLM 从模型输出中提取预测的选项字母（A/B/C/D）
    - Use LLM to extract predicted option letter (A/B/C/D) from model output
-   - 提示词模板见 `Core/Utils/Evaluation.py` 中的 `CLOSE_EXTRACT_OPTION_PORMPT`
-   - Prompt template in `CLOSE_EXTRACT_OPTION_PORMPT` in `Core/Utils/Evaluation.py`
+   - 提示词模板见 `Core/Utils/Evaluation.py` 中的 `CLOSE_EXTRACT_OPTION_PORMPT` 变量
+   - Prompt template in `CLOSE_EXTRACT_OPTION_PORMPT` variable in `Core/Utils/Evaluation.py`
+   - Note: The variable name has a typo (PORMPT instead of PROMPT) in the original code
 
 4. **计算准确率** (Calculate Accuracy)
    - 比较提取的选项与 answer_idx 字段
@@ -364,6 +365,7 @@ cat working_dir/exp_name/Results/results.score.json
 系统使用 LLM 提取选项，提示词模板在 `Core/Utils/Evaluation.py`:
 
 ```python
+# Note: Variable name has a typo in original code (PORMPT instead of PROMPT)
 CLOSE_EXTRACT_OPTION_PORMPT = """
 You are given a model output which is a string...
 ...extract the option letter from the model output...
