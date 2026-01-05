@@ -217,6 +217,8 @@ self.dataset_mode_map = {
 ### 选项提取
 系统使用特殊的提示词让 LLM 从模型输出中提取选项字母。提示词模板在 `Core/Utils/Evaluation.py` 中的 `CLOSE_EXTRACT_OPTION_PORMPT` 变量。
 
+注意：变量名中的 "PORMPT" 是原代码中的拼写错误（应为 "PROMPT"），但我们在文档中保持与实际代码一致。
+
 ---
 
 ## 相关文档
