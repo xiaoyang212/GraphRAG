@@ -101,6 +101,35 @@ This mode:
 - `Corpus.json`: Contains corpus documents with fields: `title`, `context`
 - `Question.json`: Contains questions with fields: `question`, `answer`, and `doc_id` (or `corpus_id`) to link questions to corpus samples
 
+#### Multiple-Choice Question Support
+
+GraphRAG supports **multiple-choice questions** (选择题) using the **close-set evaluation mode**. 
+
+**Quick Start:**
+```bash
+# Use a dataset with multiple-choice questions
+python main.py -opt Option/Method/RAPTOR.yaml -dataset_name quality_example
+```
+
+**Data Format for Multiple-Choice:**
+```json
+{
+  "question": "Who created Python?\nA: James Gosling\nB: Guido van Rossum\nC: Dennis Ritchie\nD: Bjarne Stroustrup",
+  "answer": "Guido van Rossum",
+  "answer_idx": "B",
+  "doc_id": 0
+}
+```
+
+**Key Requirements:**
+- Add `answer_idx` field with the correct option letter (A/B/C/D)
+- Include dataset name with "quality" (e.g., `quality_test`) to trigger close-set evaluation mode
+- Format question with clear options (A:, B:, C:, D:)
+
+**Example Dataset:** See `Data/MultipleChoiceExample/` for a complete example.
+
+📖 **Full Documentation:** [Doc/MULTIPLE_CHOICE_SUPPORT.md](Doc/MULTIPLE_CHOICE_SUPPORT.md)
+
 ### Dependencies
 
 Ensure you have the required dependencies installed (The default experiment name is digimon):
